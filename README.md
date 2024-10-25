@@ -14,6 +14,11 @@ Assim você instalara as dependências do projeto e logo após dê o comando:
 
 npm start
 
-ele vai iniciar tanto o vite/react quanto o apollo junto ao GraphQL 
+ele vai iniciar tanto o vite/react quanto o apollo junto ao GraphQL. 
 
+Ao entrar você pode se redirecionar ao cadastro ou login caso tenha uma conta. 
+![alt text](https://prnt.sc/I_l8Z9bY6dTC)
 
+e após confirmar as credênciais você pode entrar e conferir os dados dos sensores
+
+![alt text](https://prnt.sc/zCy42xxp8xcA)
