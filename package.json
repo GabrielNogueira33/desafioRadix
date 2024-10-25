@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "concurrently \"npm run start-apollo\" \"npm run start-vite\"",
+    "start-apollo": "node src/graphql/index.js",
+    "start-vite": "vite",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -12,6 +15,7 @@
   "dependencies": {
     "@apollo/client": "^3.11.8",
     "apollo-server": "^3.13.0",
+    "badge-maker": "^4.1.0",
     "chart.js": "^4.4.5",
     "datatables.net-dt": "^2.1.8",
     "dotenv": "^16.4.5",
@@ -29,6 +33,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^9.0.1",
     "eslint": "^9.9.0",
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",

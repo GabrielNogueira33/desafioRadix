@@ -62,3 +62,9 @@ tbody{
     color: white;
     background-color: rgb(85, 134, 194);
 }
+
+.icon{
+    margin-right: 10px;
+    font-size: 20px;
+    color: inherit;
+}

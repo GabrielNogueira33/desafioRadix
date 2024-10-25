@@ -1,37 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensores</title>
-    <link rel="stylesheet" href="cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" />
+    <link rel="stylesheet" href="src/react/css/sensores.css">
 </head>
-<body>
-    <div class="sidebar">
-        <a href="../index.html">Home</a>
-        <a href="Dashboard">Dashboard geral</a>
-      </div>
-      <script type="module" src="/src/react/main.jsx"></script>
-    <script src="src/react/App.jsx"></script>
-      <script src="cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
 
-      <div class="conteudo">
-      <table id="tabela-sensores" class="display">
+<body>
+   
+    <script src="cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+    <div class="sidebar">
+         <a href="">Home</a>
+        <a href="Dashboard">Dashboard geral</a>
+    </div>
+
+    <div class="conteudo">
+        <table id="tabela-sensores" class="display">
             <thead>
                 <tr>
                     <th>EquipmentId</th>
-                    <th>timestamp</th>
-                    <th>value</th>
+                    <th>Value</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
                 </tr>
             </tbody>
-      </table>
+        </table>
     </div>
+
+    <script src="https://cdn.datatables.net/2.1.8/js/jquery.dataTables.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function fetchData(query) {
+        return fetch('http://localhost:4000/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ query }),
+        })
+            .then(response => response.json())
+            .then(data => data.data);
+    }
+
+    const countQuery = `
+        query {
+            countQuery
+        }
+    `;
+
+    const sensoresQuery = `
+        query {
+            sensores {
+                equipmentId
+                value
+            }
+        }
+    `;
+
+    fetchData(countQuery).then(countData => {
+        const totalSensores = countData.countQuery;
+
+        fetchData(sensoresQuery).then(sensoresData => {
+            const sensores = sensoresData.sensores;
+            const tbody = document.querySelector("#tabela-sensores tbody");
+            
+            for (var i = 0; i < totalSensores; i++) {
+                const sensor = sensores[i];
+
+                const linha = document.createElement("tr");
+
+                const equipmentCell = document.createElement("td");
+                equipmentCell.textContent = sensor.equipmentId;
+
+                const valueCell = document.createElement("td");
+                valueCell.textContent = sensor.value;
+
+                linha.appendChild(equipmentCell);
+                linha.appendChild(valueCell);
+
+                tbody.appendChild(linha);
+            }
+        }).catch(error => console.error('Erro ao carregar sensores:', error));
+    }).catch(error => console.error('Erro ao carregar o count:', error));
+});
+    </script>
 </body>
+
 </html>

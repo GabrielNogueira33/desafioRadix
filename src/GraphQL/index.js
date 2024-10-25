@@ -48,7 +48,19 @@ let typeDefs = gql `
 
     type mediaDiaLista{
     value: Float!
-    }
+}
+
+type media2DiasLista{
+    value: Float!
+}
+
+type mediaSemanaLista{
+    value: Float!
+}
+
+type mediaMesLista{
+    value: Float!
+}
 
         type Query {
     usuarios: [Usuario]
@@ -58,8 +70,12 @@ let typeDefs = gql `
     mediaSemana: [mediaSemana]
     mediaMes: [mediaMes]
     mediaDiaLista: [mediaDiaLista]
+    media2DiasLista: [media2DiasLista]
+    mediaSemanaLista: [mediaSemanaLista]
+    mediaMesLista: [mediaMesLista]
     maior: [maior_sensor]
     menor: [menor_sensor]
+    countQuery: Int
 }
 
         type Mutation {
@@ -106,6 +122,28 @@ let resolvers = {
             const result = await sequelize.query(`SELECT * FROM mediaDiaLista`, {
                 type: sequelize.QueryTypes.SELECT,
             });
+            console.log(result);
+            return result;
+        },
+        media2DiasLista: async () => {
+            const result = await sequelize.query(`SELECT * FROM media2DiasLista`, {
+                type: sequelize.QueryTypes.SELECT,
+            });
+            console.log(result);
+            return result;
+        },
+        mediaSemanaLista: async () => {
+            const result = await sequelize.query(`SELECT * FROM mediaSemanaLista`, {
+                type: sequelize.QueryTypes.SELECT,
+            });
+            console.log(result);
+            return result;
+        },
+        mediaMesLista: async () => {
+            const result = await sequelize.query(`SELECT * FROM mediaMesLista`, {
+                type: sequelize.QueryTypes.SELECT,
+            });
+            console.log(result);
             return result;
         },
         maior: async() => {
@@ -117,6 +155,12 @@ let resolvers = {
             return await sequelize.query('SELECT * FROM menor_sensor', {
                 type: sequelize.QueryTypes.SELECT,
               });
+        },
+        countQuery: async () => {
+            const result = await sequelize.query(`SELECT COUNT(*) AS total FROM Sensores`, {
+                type: sequelize.QueryTypes.SELECT,
+            });
+            return result[0].total; // retorna o número total
         },
     },
     Mutation: {
@@ -152,3 +196,5 @@ sequelize.sync().then(() => {
     });
   });
 
+
+  
