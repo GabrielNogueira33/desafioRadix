@@ -16,8 +16,9 @@ npm start
 
 ele vai iniciar tanto o vite/react quanto o apollo junto ao GraphQL. 
 
-Ao entrar você pode se redirecionar ao cadastro ou login caso tenha uma conta. 
-![alt text](https://prnt.sc/I_l8Z9bY6dTC)
+Ao entrar você pode se redirecionar ao cadastro ou login caso tenha uma conta.
+
+![alt text](image.png)
 
 e após confirmar as credênciais você pode entrar e conferir os dados dos sensores
 
