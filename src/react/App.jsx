@@ -1,12 +1,14 @@
-import {BrowserRouter, Route, Routes} from "react-router-dom"
-import Login from "./Login"
-import Cadastro from "./Cadastro"
-import Dashboard from "./Dashboard"
-import Sensores from "./Sensores"
-import React from "react"
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Login from "./Login";
+import Cadastro from "./Cadastro";
+import Dashboard from "./Dashboard";
+import Sensores from "./Sensores";
+// import React from "react";
+import {gql, useQuery} from '@apollo/client';
+import React from "react";
+
 
 function App() {
-
   return (
     <div>
     <main>
@@ -20,7 +22,8 @@ function App() {
       </BrowserRouter>
     </main>
   </div>
-  )
+  );
+
 }
 
 export default App;

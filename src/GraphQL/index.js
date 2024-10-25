@@ -17,10 +17,50 @@ let typeDefs = gql `
         value: Float!
     }
 
-        type Query{
-        usuarios: [Usuario]
-        sensores: [Sensores]
-        }
+    type media_sensores{
+    value: Float!
+    }
+
+    type maior_sensor {
+    value: Float!
+    }
+
+    type menor_sensor {
+    value: Float!
+    }
+
+    type mediaDia{
+    value: Float!
+    }
+    
+    type media2Dias{
+    value: Float!
+    }
+
+    
+    type mediaSemana{
+    value: Float!
+    }
+
+    type mediaMes{
+    value: Float!
+    }
+
+    type mediaDiaLista{
+    value: Float!
+    }
+
+        type Query {
+    usuarios: [Usuario]
+    sensores: [Sensores]
+    mediaDia: [mediaDia]
+    media2Dias: [media2Dias]
+    mediaSemana: [mediaSemana]
+    mediaMes: [mediaMes]
+    mediaDiaLista: [mediaDiaLista]
+    maior: [maior_sensor]
+    menor: [menor_sensor]
+}
 
         type Mutation {
         encontrarUsuario(email: String!, senha: String!): Usuario
@@ -38,9 +78,46 @@ let resolvers = {
         sensores: async() => {
             return await Sensores.findAll();
         },
-        // sensor: async(_, {equipmentId}) => {
-        //     return await Sensores.findOne(equipmentId);
-        // },
+        mediaDia: async () => {
+            const result = await sequelize.query(`SELECT * FROM mediaDia`, {
+                type: sequelize.QueryTypes.SELECT,
+            });
+            return result;
+        },
+        media2Dias: async () => {
+            const result = await sequelize.query(`SELECT * FROM media2Dias`, {
+                type: sequelize.QueryTypes.SELECT,
+            });
+            return result;
+        },
+        mediaSemana: async () => {
+            const result = await sequelize.query(`SELECT * FROM mediaSemana`, {
+                type: sequelize.QueryTypes.SELECT,
+            });
+            return result;
+        },
+        mediaMes: async () => {
+            const result = await sequelize.query(`SELECT * FROM mediaMes`, {
+                type: sequelize.QueryTypes.SELECT,
+            });
+            return result;
+        },
+        mediaDiaLista: async () => {
+            const result = await sequelize.query(`SELECT * FROM mediaDiaLista`, {
+                type: sequelize.QueryTypes.SELECT,
+            });
+            return result;
+        },
+        maior: async() => {
+            return await sequelize.query('SELECT * FROM maior_sensor', {
+                type: sequelize.QueryTypes.SELECT,
+              });
+        },
+        menor: async() => {
+            return await sequelize.query('SELECT * FROM menor_sensor', {
+                type: sequelize.QueryTypes.SELECT,
+              });
+        },
     },
     Mutation: {
         createUser: async(_,{nome, email, senha}) => {
@@ -56,8 +133,8 @@ let resolvers = {
             return novoCSV;
          },
          encontrarUsuario: async(_, {email, senha}) => {
-            const user = await Usuario.findOne({ where: {email}})
-            if(!user|| user.senha != senha){
+            const user = await Usuario.findOne({ where: {email, senha}})
+            if(user.email != email || user.senha != senha){
                 console.error("email ou senha inválidos");
                 return;
             }
@@ -75,4 +152,3 @@ sequelize.sync().then(() => {
     });
   });
 
-export default typeDefs;

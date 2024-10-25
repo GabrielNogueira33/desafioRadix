@@ -5,7 +5,7 @@ function Sensores(){
 
     return(
         <div></div>
-    )
+    );
 }
 
 export default Sensores;

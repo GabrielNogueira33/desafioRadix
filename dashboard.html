@@ -7,35 +7,48 @@
     <link rel="stylesheet" href="src/dashboard.css">
 </head>
 <body>
-    <div class="sidebar">
-        <a href="../index.html">Home</a>
-        <a href="Sensores">Por sensores</a>
-      </div>
+  <div class="sidebar">
+      <a href="../index.html">Home</a>
+      <a href="Sensores">Por sensores</a>
+    </div>
 
-        <div class="conteudo">
-            <div class="kpi1">
-                <h1>kpi 1</h1>
-                <p>teste1</p>
-            </div>
-            <div class="kpi2">
-                <h1>kpi 2</h1>
-                <p>teste1</p>
-            </div>
-            <div class="kpi3">
-                <h1>kpi 3</h1>
-                <p>teste1</p>
-            </div>
-            <div class="kpi4">
-                <h1>kpi 4</h1>
-                <p>teste1</p>
-            </div>
-            <div class="grafico"> </div>
-            <div class="grafico"></div>
-            <div class="grafico"> </div>
-            <div class="grafico"></div>
+      <div class="conteudo">
+          <div class="kpi1">
+              <h3>Média do dia</h3>
+              <p id="p_kpi1"></p>
+          </div>
+          <div class="kpi2">
+              <h3>Maior temperatura no mês</h3>
+              <p id="p_kpi2"></p>
+          </div>
+          <div class="kpi3">
+              <h3>Menor temperatura no mês</h3>
+              <p id="p_kpi3"></p>
+          </div>
+          <div class="kpi4">
+              <h3>Média do mês</h3>
+              <p id="p_kpi4"></p>
+          </div>
+          
+          <div class="grafico">
+            <canvas id="myChart1"></canvas>
         </div>
+        <div class="grafico">
+            <canvas id="myChart2"></canvas>
+        </div>
+        <div class="grafico">
+            <canvas id="myChart3"></canvas>
+        </div>
+        <div class="grafico">
+            <canvas id="myChart4"></canvas>
+        </div>
+
         
-        <script type="module" src="/src/react/main.jsx"></script>
-        <script src="src/react/App.jsx"></script>
+      </div>
+       
+      <div id="root"></div>
+      <script type="module" src="/src/react/main.jsx"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="src/graficos.js"></script>  
 </body>
 </html>

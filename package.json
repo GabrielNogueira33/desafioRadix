@@ -12,6 +12,7 @@
   "dependencies": {
     "@apollo/client": "^3.11.8",
     "apollo-server": "^3.13.0",
+    "chart.js": "^4.4.5",
     "datatables.net-dt": "^2.1.8",
     "dotenv": "^16.4.5",
     "graphql": "^16.9.0",

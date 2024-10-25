@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize('desafioRadix', 'root', '2712', {
+const sequelize = new Sequelize('desafioRadix', 'root', 'SenhaDoBanco', {
     host: 'localhost',
     dialect:'mysql',
 });
