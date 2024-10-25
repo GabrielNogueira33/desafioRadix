@@ -19,5 +19,16 @@ ele vai iniciar tanto o vite/react quanto o apollo junto ao GraphQL.
 Ao entrar você pode se redirecionar ao cadastro ou login caso tenha uma conta.
 e após confirmar as credênciais você pode entrar e conferir os dados dos sensores
 
-- [#1](https://github.com/GabrielNogueira33/desafioRadix/issues/1)
+Clique aqui para telas de Acesso e Dashboard
+- [#1](https://github.com/GabrielNogueira33/desafioRadix/issues/1) 👈😎
+
+Você também pode inserir arquivos CSV e inseri-los no banco de dados, basta você ir até a pasta src
+e logo após na pasta arquivosCSV e colocar o arquivo lá, porém você precisara de um editor de texto para mudar 
+o nome do arquivo CSV que você inseriu na pasta, segue exemplo abaixo:
+
+Clique aqui para saber como usar a ferramenta de CSV
+- [#2](https://github.com/GabrielNogueira33/desafioRadix/issues/2)👈😯
+
+
+
 
